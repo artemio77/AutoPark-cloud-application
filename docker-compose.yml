@@ -1,0 +1,61 @@
+version: '2'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: auto_park_db
+      POSTGRES_USER: auto_park_db_user
+      POSTGRES_PASSWORD: auto_park_db_password
+    ports:
+      - "15432:5432"
+#  configuration-service:
+#    environment:
+#      AUTH_SERVICE_URL: $AUTH_SERVICE_URL
+#      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
+#      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+#    image: receptoron/cloud-auto-park-configuration-service
+#    ports:
+#      - 8888:8888
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#  gateway-service:
+#    environment:
+#      AUTH_SERVICE_URL: $AUTH_SERVICE_URL
+#      GATEWAY_SERVICE_URL: $GATEWAY_SERVICE_URL
+#      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
+#      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+#    image: receptoron/cloud-auto-park-gateway-service
+#    ports:
+#      - 4000:4000
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#
+#
+#  authentication-service:
+#    environment:
+#      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
+#      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+#    image: receptoron/cloud-auto-park-authentication-service
+#    ports:
+#      - 5000:5000
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"
+#  auto-park-service:
+#    environment:
+#      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
+#      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
+#      AUTH_SERVICE_URL: $AUTH_SERVICE_URL
+#    image: receptoron/cloud-auto-park-service
+#    ports:
+#      - 5060:5060
+#    logging:
+#      options:
+#        max-size: "10m"
+#        max-file: "10"

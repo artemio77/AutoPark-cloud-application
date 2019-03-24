@@ -1,0 +1,11 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: auto-park-service
+  cloud:
+    config:
+      uri: ${CONFIG_SERVICE_URL}
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: user

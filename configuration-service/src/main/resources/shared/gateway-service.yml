@@ -1,0 +1,29 @@
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 600000
+    socket-timeout-millis: 600000
+  routes:
+    auth-service:
+      path: /auth-service/**
+      url: ${AUTH_SERVICE_URL}
+      stripPrefix: false
+      sensitiveHeaders:
+
+    auto-park-service:
+      path: /auto-park-service/**
+      url: ${AUTO_PARK_SERVICE_URL}
+      stripPrefix: false
+      sensetiveHeaders:
+server:
+  port: 4000
+ribbon:
+  ReadTimeout: 30000
+  ConnectTimeout: 30000
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 100000
