@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user.service';
 import {AppService} from '../../service/app.service';
@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
   private user: User;
   private currentUser: Observable<User>;
   @Output() childEvent = new EventEmitter();
-  sidenav: MatSidenav;
+  @ViewChild('sidenav') sidenav: MatSidenav;
 
   constructor(private appService: AppService,
               private userService: UserService,

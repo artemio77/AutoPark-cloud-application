@@ -1,16 +1,20 @@
 package com.gmail.derevets.artem.autoparkservice.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.key.ZonedDateTimeKeyDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
 import com.fasterxml.uuid.Generators;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 /**
@@ -24,13 +28,11 @@ public abstract class BaseEntity<ID> {
     @JsonProperty("id")
     private UUID id;
 
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime creationTime;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    private ZonedDateTime creationTime;
 
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    private LocalDateTime modificationTime;
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSZ")
+    private ZonedDateTime modificationTime;
 
     @Version
     private long version;
@@ -39,14 +41,14 @@ public abstract class BaseEntity<ID> {
     @PrePersist
     public void prePersist() {
         this.id = Generators.timeBasedGenerator().generate();
-        LocalDateTime now = LocalDateTime.now();
+        ZonedDateTime now = ZonedDateTime.now();
         this.creationTime = now;
         this.modificationTime = now;
     }
 
     @PreUpdate
     public void preUpdate() {
-        this.modificationTime = LocalDateTime.now();
+        this.modificationTime = ZonedDateTime.now();
     }
 }
 

@@ -9,6 +9,9 @@ import java.util.UUID;
 
 @Repository
 public interface RouteRepository extends CrudRepository<Route, UUID> {
-    List<Route> findByTransportOnRouteListIsNull();
+    List<Route> findAllByTransportIsNull();
+
+    List<Route> findAll();
+
 
 }

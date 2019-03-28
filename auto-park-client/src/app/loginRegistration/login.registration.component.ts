@@ -12,7 +12,6 @@ import {Cookie} from 'ng2-cookies';
 export class LoginRegistrationComponent implements OnInit {
 
   selectedIndex = 0;
-  private urlSufix = 'application/';
 
 
   constructor(private snackBar: MatSnackBar,

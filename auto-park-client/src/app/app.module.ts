@@ -66,11 +66,22 @@ import {JwtHelperService} from '@auth0/angular-jwt';
 import {AppGuardModule} from '../modules/app-guard.module';
 import {UserManagerTransportComponent} from './application/user-manager-transport/user-manager-transport.component';
 import {TransportService} from '../service/transport.service';
-import {UserAssignComponent} from './application/user-assign-component/user-assign.component';
+import {UserAssignComponent} from './application/user-manager-transport/user-assign-component/user-assign.component';
+import {UserManagerRouteComponent} from './application/user-manager-route/user-manager-route.component';
+import {UserManagerDriverComponent} from './application/user-manager-driver/user-manager-driver.component';
+import {RouteService} from '../service/route.service';
+import {UserManagerDriverCreateComponent} from './application/user-manager-driver/user-manager-driver-create/user-manager-driver-create.component';
+import {UserManagerRouteCreateComponent} from './application/user-manager-route/user-manager-route-create/user-manager-route-create.component';
+import {UserManagerTransportCreateComponent} from './application/user-manager-transport/user-manager-transport-create/user-manager-transport-create.component';
 
 
 @NgModule({
-  entryComponents: [UserSearchComponent, UserAssignComponent],
+  entryComponents: [
+    UserSearchComponent,
+    UserAssignComponent,
+    UserManagerTransportCreateComponent,
+    UserManagerDriverCreateComponent,
+    UserManagerRouteCreateComponent,],
   declarations: [
     RegistrationSnackBarComponent,
     UserManagerTransportComponent,
@@ -83,7 +94,12 @@ import {UserAssignComponent} from './application/user-assign-component/user-assi
     ProgressBarComponent,
     UserContentComponent,
     UserSearchComponent,
-    UserAssignComponent
+    UserAssignComponent,
+    UserManagerRouteComponent,
+    UserManagerDriverComponent,
+    UserManagerDriverCreateComponent,
+    UserManagerRouteCreateComponent,
+    UserManagerTransportCreateComponent
   ],
   imports: [
     CdkTableModule,
@@ -142,6 +158,7 @@ import {UserAssignComponent} from './application/user-assign-component/user-assi
     AuthGuardService,
     AuthService,
     UserService,
+    RouteService,
     AppService
   ],
   bootstrap: [AppComponent]

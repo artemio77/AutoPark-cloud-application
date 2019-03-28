@@ -22,7 +22,6 @@ export class UserContentComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    //this.appService.checkCredentials(this.urlPrefix, Cookie.get('login'), this.urlSuffix);
   }
 
   ngOnDestroy(): void {

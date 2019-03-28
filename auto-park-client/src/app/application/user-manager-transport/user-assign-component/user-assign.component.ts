@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm} from '@angular/forms';
-import {UserService} from '../../../service/user.service';
+import {UserService} from '../../../../service/user.service';
 import {ErrorStateMatcher, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {User} from '../../../model/user';
-import {TransportService} from '../../../service/transport.service';
+import {User} from '../../../../model/user';
+import {TransportService} from '../../../../service/transport.service';
 
 export interface DialogData {
   id: string;

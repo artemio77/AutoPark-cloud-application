@@ -3,7 +3,8 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 import {TransportService} from '../../../service/transport.service';
 import {MatDialog, MatPaginator, MatSlideToggleChange, MatSort, MatTableDataSource} from '@angular/material';
 import {TransportEntity} from '../../../model/transport';
-import {UserAssignComponent} from '../user-assign-component/user-assign.component';
+import {UserAssignComponent} from './user-assign-component/user-assign.component';
+import {UserManagerTransportCreateComponent} from './user-manager-transport-create/user-manager-transport-create.component';
 
 @Component({
   selector: 'app-user-manager-transport',
@@ -64,6 +65,17 @@ export class UserManagerTransportComponent implements OnInit {
       console.log('The dialog was closed');
     });
   }
+
+  public createTransport() {
+    const dialogRef = this.dialog.open(UserManagerTransportCreateComponent, {
+      width: '850vh',
+      height: '70vh',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 
   public toggleAssignUserFilter(event: MatSlideToggleChange) {
     if (!this.assignUserFilterChecked) {

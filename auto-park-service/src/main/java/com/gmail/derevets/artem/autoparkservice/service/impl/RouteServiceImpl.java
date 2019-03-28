@@ -19,9 +19,14 @@ public class RouteServiceImpl implements RouteService {
 
     @Override
     public List<Route> getRouteListWithoutTransport() {
-        List<Route> emptyTransportRouteList = routeRepository.findByTransportOnRouteListIsNull();
+        List<Route> emptyTransportRouteList = routeRepository.findAllByTransportIsNull();
         log.info("Route without transport {}", emptyTransportRouteList);
         return emptyTransportRouteList;
+    }
+
+    @Override
+    public List<Route> getRouteListWithoutFilter() {
+        return routeRepository.findAll();
     }
 
     @Override

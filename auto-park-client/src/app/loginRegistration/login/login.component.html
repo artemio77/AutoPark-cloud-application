@@ -26,8 +26,10 @@
     <mat-error [hidden]="!error">
       <strong>Login or password are incorrect</strong>
     </mat-error>
-    <button mat-raised-button color="primary"  [disabled]="form.invalid" type="submit">Login
-    </button>
+    <div>
+      <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">Login
+      </button>
+    </div>
   </div>
 </form>
 

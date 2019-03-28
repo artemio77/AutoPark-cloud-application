@@ -1,13 +1,18 @@
 <div>
-  <div>
-    <mat-slide-toggle [checked]="assignUserFilterChecked" (change)="toggleAssignUserFilter($event)">Transport With
-      Assign User
-    </mat-slide-toggle>
-  </div>
-  <div>
-    <mat-slide-toggle [checked]="assignRouteFilterChecked" (change)="toggleAssignRouteFilter($event)">Transport With
-      Assign Route
-    </mat-slide-toggle>
+  <div class="row">
+    <div class="col-3">
+      <button mat-raised-button color="primary" (click)="createTransport()">Create</button>
+    </div>
+    <div class="col-3">
+      <mat-slide-toggle [checked]="assignUserFilterChecked" (change)="toggleAssignUserFilter($event)">Transport With
+        Assign User
+      </mat-slide-toggle>
+    </div>
+    <div class="col-3">
+      <mat-slide-toggle [checked]="assignRouteFilterChecked" (change)="toggleAssignRouteFilter($event)">Transport With
+        Assign Route
+      </mat-slide-toggle>
+    </div>
   </div>
   <div class="example-container mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">

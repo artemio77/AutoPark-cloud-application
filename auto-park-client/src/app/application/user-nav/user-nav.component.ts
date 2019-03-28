@@ -18,7 +18,7 @@ export class UserNavComponent implements OnInit {
   private routeOnDriversUrl: string = '/application/' + localStorage.getItem('login') + '/drivers';
 
 
-  constructor(private userComponent: UserComponent,
+  constructor(public userComponent: UserComponent,
               private appService: AppService) {
 
   }

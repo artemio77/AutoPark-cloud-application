@@ -9,6 +9,7 @@ public interface RouteService {
 
     List<Route> getRouteListWithoutTransport();
 
+    List<Route> getRouteListWithoutFilter();
 
     Route createRoute(Route route);
 

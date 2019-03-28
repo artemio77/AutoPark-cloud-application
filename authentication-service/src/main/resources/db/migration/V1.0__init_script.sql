@@ -22,24 +22,24 @@ create index if not exists flyway_schema_history_s_idx
 
 create table if not exists user_accounts
 (
-  id                         uuid                  not null
+  id                         uuid                     not null
     constraint user_accounts_pkey
       primary key,
-  creation_time              timestamp             not null,
-  email                      varchar(100)          not null
+  creation_time              timestamp with time zone not null,
+  email                      varchar(100)             not null
     constraint user_accounts_email_key
       unique,
-  first_name                 varchar(100)          not null,
-  last_name                  varchar(100)          not null,
-  modification_time          timestamp             not null,
+  first_name                 varchar(100)             not null,
+  last_name                  varchar(100)             not null,
+  modification_time          timestamp with time zone not null,
   password                   varchar(255),
-  role                       varchar(20)           not null,
+  role                       varchar(20)              not null,
   sign_in_provider           varchar(20),
-  version                    bigint                not null,
-  is_account_non_locked      boolean default true  not null,
-  is_account_non_expired     boolean default true  not null,
-  is_credentials_non_expired boolean default true  not null,
-  is_enabled                 boolean default false not null,
+  version                    bigint                   not null,
+  is_account_non_locked      boolean default true     not null,
+  is_account_non_expired     boolean default true     not null,
+  is_credentials_non_expired boolean default true     not null,
+  is_enabled                 boolean default false    not null,
   verification_code          bigint
 );
 
@@ -153,14 +153,14 @@ alter table clientdetails
 
 create table if not exists route
 (
-  id                uuid         not null
+  id                uuid                     not null
     constraint table_name_pk
       primary key,
-  creation_time     timestamp    not null,
-  modification_time timestamp    not null,
-  name              varchar(256) not null,
+  creation_time     timestamp with time zone not null,
+  modification_time timestamp with time zone not null,
+  name              varchar(256)             not null,
   description       text,
-  route_number      integer      not null
+  route_number      integer                  not null
 );
 
 alter table route
@@ -168,21 +168,21 @@ alter table route
 
 create table if not exists transport
 (
-  id                uuid         not null
+  id                uuid                     not null
     constraint transport_pk
       primary key,
-  creation_time     timestamp    not null,
-  modification_time timestamp    not null,
-  name              varchar(256) not null,
-  number_plate      varchar(128) not null,
-  transport_type    varchar(128) not null,
+  creation_time     timestamp with time zone not null,
+  modification_time timestamp with time zone not null,
+  name              varchar(256)             not null,
+  number_plate      varchar(128)             not null,
+  transport_type    varchar(128)             not null,
   route_id          uuid
     constraint transport_route_id_fk
       references route,
   user_id           uuid
     constraint transport_user_accounts_id_fk
       references user_accounts,
-  version           integer      not null
+  version           integer                  not null
 );
 
 alter table transport

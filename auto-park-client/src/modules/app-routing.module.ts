@@ -6,19 +6,17 @@ import {LoginRegistrationComponent} from '../app/loginRegistration/login.registr
 import {UserContentComponent} from '../app/application/user-application/user-content.component';
 import {AuthGuardService} from '../service/auth-guard.service';
 import {UserManagerTransportComponent} from '../app/application/user-manager-transport/user-manager-transport.component';
+import {UserManagerRouteComponent} from '../app/application/user-manager-route/user-manager-route.component';
+import {UserManagerDriverComponent} from '../app/application/user-manager-driver/user-manager-driver.component';
 
 const itemRoutes: Routes = [
-  {path: 'context', component: UserContentComponent, canActivate: [AuthGuardService]},
-  {path: 'transport', component: UserManagerTransportComponent, canDeactivate: [AuthGuardService]},
+  {path: 'context', component: UserContentComponent},
+  {path: 'transport', component: UserManagerTransportComponent},
+  {path: 'route', component: UserManagerRouteComponent},
+  {path: 'drivers', component: UserManagerDriverComponent},
 ];
 
 const routes: Routes = [
-
-  {
-    path: 'application/:id',
-    component: UserComponent,
-    canActivate: [AuthGuardService]
-  },
   {
     path: 'application/:id',
     component: UserComponent,
