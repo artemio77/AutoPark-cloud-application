@@ -1,0 +1,8 @@
+.container-create {
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+.container-create  > * {
+  width: 100%;
+}
