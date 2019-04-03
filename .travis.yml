@@ -1,50 +1,35 @@
 sudo: required
-
 services:
-  - docker
-
+- docker
 language: java
 jdk: oraclejdk8
-
 env:
-  global:
-    - secure: "mXpqdCr0E9286vFJie7INtqKocX672G1g26fGvull0rxv26cGD+c1V2a2SQOlAogOnSjNXgZTfvj/Ajd5/Z8dUTAObeVBzC4Vz1EttbYx8CoNM1wBl8foKK920zj+KbNN90xky7cz1oMPX3pNXXso1BspI1PHCIKMop6fydjxmlbxQAopCwClkYbbWrla/npt00+iEBKYG4EELa4hDR546GTMsmfzp44g442inLS3E0hBftp/4JMUW9g8hlmzvZenLtRRgxZDDyDDziAqFvqU4zDp8il40sHEB9+3v7BRHFYEFZbuzKYgngK7fLXwbpjzXzqOZzBf4OIEQs0S/M6RYi2ISiYfAgK2t4nIDWcG8gsC0Du1F7LiTUgkAqf681OEZw9sEIrC2SYZc72h8P/vGjrbz1jB7eNl5+81vQ2YlKKIExQK1/C53QEYEJTj7HJMhHXXr3zoDRVxaFOZI7huLWk2y71visNzeHcl4OVM75I5dtQilHs7O81i8QCas2wUrEmk4k2ANq1zWl/kSEH5Gh8EIJiUKOlvPVOav4tTIwKzc34nqJWCwEmzHYgdna+mKCJVjaxpjgh+AUNlokHtCiE1NYMftKmwxfyr5jjogTOlbQANnJYy2/Y7IaFQHmMm2erSTYsgxtmodOX82Ti8GQ/ZYOOCMHpEfGVM4M5aB0="
-    - secure: "RYxaNNQk7se1eFqQYXx3oxHrcmdNKO2SC+60FmxPaxHei6j9HgHxU3ruYCmLLPily9/JHJr7b5qj8Yjq17FGgLejyrYJgLGi5oWN2E7SMC+rLyEdO4+HEnrsKpBFKInM2l+ZgEecKgh9onLdslOMECWuNOPgakLrkMigc12MmNmOiSiivyMQUatBgAhwyBHY0YC48jXFLoJXORw73F0r5yhJfgbkU0+97LRMiKJ22AhSMW/TSaWV/4OcoElhWeaasLUDLSPQDe+nok5TzgdvZx0qkLw5M7BxUHqIvgCkQDFanjlfhjoZXvp18p7fQOgzdgkwYPU6KuZXBIaKm9bIMeDGocEE7FJdaK4ojfpoclO33OiB/ZcpMTDwjw896rE7HYInd0qekBAqQeqGEgNGNnCID+FoBO+IE+KQid53RflERrtzwZaHCBOJrq6ySaI403inIorOHDkAWXs9KhOQ4GD0/uWN1bsIOna2fThOb0HLIOObsKlOqACLl5rf2LJdY8iIWU5SDu6zcXJJy5/kxZRPckbBpex0XZRRIv+zgMoe42bM+uZtOd/CYpQdTz2EuEyhptp8SPeK/9sSwqzHfv2hrjyGIKItNJnXYUrCnTDbT+MbP21OSpOCJOjvtGYE4SvrGTDNKbWLa7RQO15iwUeGpWLBRjj8MSxDRBx1R+w=" # DOCKER_USER
-    - secure: "gqWUTlmqkdF24inaGsyin8R3hdXLhck5CW5gpWBOdign5Zx7L5xyT777ebOg4612ewgncuAWBxCPBtLMcyBSaULAC6LJtQODuxDjfhiso8B9zL3pyjw/4QMgjc9hyzNW/I0/S5uIqDAsNAfaZ/5Mc/TJl3ixChfSb3a7SzmHDRCyyn/lLr4rK4bZDw6jwsGghr9CT5sGh22rk7J5dfgJEF0I6RrYjbRa/UALjZ9NwLMBXPAc4SJADa67iRzRLnwYPmmWVB20y5na2ITRMoIkaDMUtcxXQ4CyNLOPiuzRTThQPRDLybIoIK4gBzFoG0PHyl+RuHvIZQKImPJbEorJnxFaZW4sIThFKgQTBnl1rpk6YZ6yrsaQnvFF+rODHLHD1Nux5CnbPqdY7si+LOTtJWafcD7hbjrh+YlYNoAInGWCGk2gLt5Xe5HyAl838lV25vTHZ6OiuCOE22/UIakLeyDw4/OXa4oTvnsM5nLrDkQEHh0B2IwkpSUwRh9iGVB+uCsAcvQMp7964X+LtwrQOgOZOuTIu8spMDlM3uabLjdzR9N1DMswv0T7Z+jc9+FirkMhwnbpIAdgz+zH+47GKzv/k5dRgQMrvQr4Kh+BIkGpEYA7YWueEBhPCO5pIvDMLTxj7bazICWkcBt0su1fh0AB6V+AcLkbseDuc0jCM28=" # DOCKER_PASS
-    - COMMIT=${TRAVIS_COMMIT::7}
-
+  secure:
+  - secure: hPv+micJY/ThAcprOxIgv2TDD55Fs6uAoHZTOhuoykY+R/6SAuXVunfIYwRPoEde1HqASseTNxR65EnV/zbN4CWv2M9gydTvgkgN08DuYdnOvz1E4B0xOy3l4J2d8U4uJY9SRWBI2aBro72NwL0xl+NyjfNJWx9o7YdkGxbe+mJKPQekbrx34b0h22PS9JOsIKsgMRUjm13/bTx26KgHIxIsUvLhihKtnq4c/HstFYjLwRlS76Lo7BGrEMBFC6eSsuxQnpf+6eOgsDVzBheXAtu+H97fRfAgZ2Qi7pF1RYwtih+w21hgTW1gBxpWkIEMcI6FkNnUMxBt0b6MnCFclJPmH6aS/uJ2AEhxcCLtUl8noGau7qhghc70k3V9RpP769F1Dymuu/6C25cVpJvdpJK8gGX7bbRSKSO43h6QDytpYVZrJ0Q7PAuD3QliLWbqrq5bqgGB+nQImn+J7PCu2RHS0D6EIh/UQH9sbBtFps4cBHJA6xEACaErAvnyKad0fW9u6EWu8LMb74RadwNpeD2nvbq/RBEA8Oo1mxouTOSYMiXRu/5mbPDLKxVgqPFbMd8X/YU9M97IMVNvWsqAJp95c257YyRjaV5BkFEy1r+421sNKU+q14aWtVOMTwBUzrEkDjq+6ghIJIhDVzJCSQaE3pRGc8Ur4QlWClvgkpY=
+  - secure: ztX7dO25ipYLFRzOMVdnZGq7cVSzVjlzKBVFU3HTVftFcbqK7gIui8MQad/RobVFWLcvTMkqbhzPjKJnNxb8T0LMuLMR1KIAWTfqcZw0AuJYrkl9nS8RtRRXqLkWIhQxfy/10sDV2Sml9naLk43gvlLYQBbxy311UTOLNcCOcJjn0JJ5Jef+pl9nXQccnHZvvJSGrc6qAaRqJ62B/2CXhmn9etgYfPre8X6QCIrImkg6Wbp/+/tHrxr6EgVzMQRz/53zshx1X1/hG5gIn55fAxOV/o/aUOR9Z8ibgRrSBXY9kXtRM73KXYXyfL40bkd8DRJWjT4OUsc7UV7VsZFUiFuYO+oonbllRefhBRlWXPlFq8ap7Cw1WyL+CVjJY9mB857pAj4aDA8HsbjfMJxtZogt5W0w+mTJqBPWQX+tnPj/yKGsQC6kkrV1IgAalhxUiARnCNzrK59J00viYFDOHPXXCRH4Cw/I8e9rStl8tmtGnbys/C0/ONMMXBypzRsX+wQnjtYPA/pXXZbTwnzfE1bIBVwGQudb/p/jfu7h1hGmSigng56i2/Dcy9OhOUM8H9x8rrmYsWQL2GixPcQUL7aRmP28bMXIeQd8/9FJM0wqb5DefU4kaNMgkqIli05+0N1+g9TX3ZYPyCYHVDk1um3Pa0ZEOQ2FPsJYbFp9rKY=
+  - secure: xCtSRCzDP4qavLsU2PgZpVfIyFC/MrWpBAdPgDkQTU4rToRO104c7e6Xe9+PjDmxcD3JuOPKBUmz0V2fa1YdVz93daVxkjeTrCUhlt7bQDoTq36QoS8o/B6C30McfZj9TBuvIMPDn7Z3o39aXL7gws2cjuGsu3qMZHKWLLASY3refMsy8yXFcdkyV/KR7jvAun/Ua7LTWS5QaPJn4r6Ehjbk60sTzhe7n9MVsODLDQuf9v2DGtSikSlN5YhN/l075T6dGt69KnPT0CpVQi2Ck4ZeiiW4ZT9APO1bv8iuWCX67n73Rm+k6C7a3usiFXxzmpRCFlyz9PWZVewC/Kk9RTWgbqVGjM6jnRE5Z0lDFu7jmLE/1o1OeRFdP0xE9Ae3fqH6oevz++ejjv98jMi2p18K+Zofib1u76ejzq99PKSfiNwbzrOy2SWVtao0MLU8evJsM3ECSfE2ltDlcyhfmIqO58eRlMP1u7zCbqYg9dFGfev1lTqaI4pHTyUkcYVoKilp5eJAWz7xoGDTEDdksiY/VMhIjeCdlCR3L6qX7KPnWwyvipRd1pjxi3+pseTTygJn79DSnFOuId9AJSeXMmd5gNWZewz3sov/z/z7bHZ4eWIyX7SM0jlfjNrMIXnRVi6pv7rgWetadE2l1LvTIDVeUOmGnPLR8TujSC86xFg=
+  - COMMIT=${TRAVIS_COMMIT::7}
 after_success:
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
-
-  #TAG
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-
-  # CONFIG SERVICE
-  - export CONFIG=autoparkstudentproject/cloud-auto-park-configuration-service
-  - docker build -t $CONFIG:$COMMIT ./configuration-service
-  - docker tag $CONFIG:$COMMIT $CONFIG:$TAG
-  - docker push $CONFIG
-
-  # AUTHENTICATION-SERVICE
-  - export REGISTRY=autoparkstudentproject/cloud-auto-park-authentication-service
-  - docker build -t $REGISTRY:$COMMIT ./authentication-service
-  - docker tag $REGISTRY:$COMMIT $REGISTRY:$TAG
-  - docker push $REGISTRY
-
-  # GATEWAY
-  - export GATEWAY=autoparkstudentproject/cloud-auto-park-gatewat-service
-  - docker build -t $GATEWAY:$COMMIT ./gateway-service
-  - docker tag $GATEWAY:$COMMIT $GATEWAY:$TAG
-  - docker push $GATEWAY
-
-  # AUTO PARK SERVICE
-  - export AUTO_PARK_SERVICE=autoparkstudentproject/cloud-auto-park-service
-  - docker build -t $AUTO_PARK_SERVICE:$COMMIT ./cloud-auto-park-service
-  - docker tag $AUTO_PARK_SERVICE:$COMMIT $AUTO_PARK_SERVICE:$TAG
-  - docker push $AUTO_PARK_SERVICE
-
-  # EUREKA
-  - export EUREKA=autoparkstudentproject/cloud-auto-park-eureka-service
-  - docker build -t $EUREKA:$COMMIT ./eureka-service
-  - docker tag $EUREKA:$COMMIT $EUREKA:$TAG
-  - docker push $EUREKA
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+  ; fi`
+- export CONFIG=autoparkstudentproject/cloud-auto-park-configuration-service
+- docker build -t $CONFIG:$COMMIT ./configuration-service
+- docker tag $CONFIG:$COMMIT $CONFIG:$TAG
+- docker push $CONFIG
+- export REGISTRY=autoparkstudentproject/cloud-auto-park-authentication-service
+- docker build -t $REGISTRY:$COMMIT ./authentication-service
+- docker tag $REGISTRY:$COMMIT $REGISTRY:$TAG
+- docker push $REGISTRY
+- export GATEWAY=autoparkstudentproject/cloud-auto-park-gatewat-service
+- docker build -t $GATEWAY:$COMMIT ./gateway-service
+- docker tag $GATEWAY:$COMMIT $GATEWAY:$TAG
+- docker push $GATEWAY
+- export AUTO_PARK_SERVICE=autoparkstudentproject/cloud-auto-park-service
+- docker build -t $AUTO_PARK_SERVICE:$COMMIT ./cloud-auto-park-service
+- docker tag $AUTO_PARK_SERVICE:$COMMIT $AUTO_PARK_SERVICE:$TAG
+- docker push $AUTO_PARK_SERVICE
+- export EUREKA=autoparkstudentproject/cloud-auto-park-eureka-service
+- docker build -t $EUREKA:$COMMIT ./eureka-service
+- docker tag $EUREKA:$COMMIT $EUREKA:$TAG
+- docker push $EUREKA
