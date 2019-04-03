@@ -21,12 +21,12 @@ after_success:
 - docker build -t $REGISTRY:$COMMIT ./authentication-service
 - docker tag $REGISTRY:$COMMIT $REGISTRY:$TAG
 - docker push $REGISTRY
-- export GATEWAY=autoparkstudentproject/cloud-auto-park-gatewat-service
+- export GATEWAY=autoparkstudentproject/cloud-auto-park-gateway-service
 - docker build -t $GATEWAY:$COMMIT ./gateway-service
 - docker tag $GATEWAY:$COMMIT $GATEWAY:$TAG
 - docker push $GATEWAY
 - export AUTO_PARK_SERVICE=autoparkstudentproject/cloud-auto-park-service
-- docker build -t $AUTO_PARK_SERVICE:$COMMIT ./cloud-auto-park-service
+- docker build -t $AUTO_PARK_SERVICE:$COMMIT ./auto-park-service
 - docker tag $AUTO_PARK_SERVICE:$COMMIT $AUTO_PARK_SERVICE:$TAG
 - docker push $AUTO_PARK_SERVICE
 - export EUREKA=autoparkstudentproject/cloud-auto-park-eureka-service
