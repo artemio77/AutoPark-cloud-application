@@ -20,7 +20,7 @@
     "@angular-devkit/schematics": "^0.7.5",
     "@angular-devkit/schematics-cli": "^0.7.5",
     "@angular-devkit/schematics-tools": "0.0.1",
-    "@angular/animations": "^6.0.5",
+    "@angular/animations": "^6.1.10",
     "@angular/cdk": "^6.2.1",
     "@angular/common": "^6.1.10",
     "@angular/compiler": "^6.1.10",
@@ -46,7 +46,8 @@
     "ngx-toastr": "latest",
     "rxjs": "^6.0.0",
     "ts-md5": "^1.2.4",
-    "zone.js": "^0.8.29"
+    "zone.js": "^0.8.29",
+    "jwt-decode": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.3",

@@ -1,8 +1,0 @@
-.container-assign {
-  margin-bottom: 5vh;
-  display: flex;
-  flex-direction: column;
-}
-.container-assign  > * {
-  width: 100%;
-}

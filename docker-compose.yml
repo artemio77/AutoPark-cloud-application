@@ -14,7 +14,7 @@ services:
 #      AUTH_SERVICE_URL: $AUTH_SERVICE_URL
 #      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
 #      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-#    image: receptoron/cloud-auto-park-configuration-service
+#    image: autoparkstudentproject/cloud-auto-park-configuration-service
 #    ports:
 #      - 8888:8888
 #    logging:
@@ -27,7 +27,7 @@ services:
 #      GATEWAY_SERVICE_URL: $GATEWAY_SERVICE_URL
 #      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
 #      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-#    image: receptoron/cloud-auto-park-gateway-service
+#    image: autoparkstudentproject/cloud-auto-park-gateway-service
 #    ports:
 #      - 4000:4000
 #    logging:
@@ -40,7 +40,7 @@ services:
 #    environment:
 #      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
 #      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
-#    image: receptoron/cloud-auto-park-authentication-service
+#    image: autoparkstudentproject/cloud-auto-park-authentication-service
 #    ports:
 #      - 5000:5000
 #    logging:
@@ -52,7 +52,7 @@ services:
 #      CONFIG_SERVICE_URL: $CONFIG_SERVICE_URL
 #      CONFIG_SERVICE_PASSWORD: $CONFIG_SERVICE_PASSWORD
 #      AUTH_SERVICE_URL: $AUTH_SERVICE_URL
-#    image: receptoron/cloud-auto-park-service
+#    image: autoparkstudentproject/cloud-auto-park-service
 #    ports:
 #      - 5060:5060
 #    logging:
