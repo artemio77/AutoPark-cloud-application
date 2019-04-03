@@ -1,10 +1,19 @@
-<div class="container-create"><p>
+<div class="container-create">
   <form (submit)="createTransport()" [formGroup]="form">
 
     <div>
-      <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">
-        Create
-      </button>
+
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Outline form field</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
     </div>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">
+      Create
+    </button>
   </form>
 </div>

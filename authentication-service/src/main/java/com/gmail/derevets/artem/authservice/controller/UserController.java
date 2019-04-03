@@ -3,6 +3,7 @@ package com.gmail.derevets.artem.authservice.controller;
 
 import com.gmail.derevets.artem.authservice.model.User;
 import com.gmail.derevets.artem.authservice.model.enums.Role;
+import com.gmail.derevets.artem.authservice.service.UserService;
 import com.gmail.derevets.artem.authservice.service.impl.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import java.util.stream.Collectors;
 @RestController
 public class UserController {
 
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     private final PasswordEncoder passwordEncoder;
 
@@ -60,13 +61,13 @@ public class UserController {
         return userService.activateUser(code);
     }
 
-    @GetMapping("/exist/{email:.+}")
+    @PostMapping("/exist/{email:.+}")
     public Boolean existUserByEmail(@PathVariable String email) {
         if (userService.findUserByEmail(email) != null) {
-            log.info("true");
+            log.info(" STATE true");
             return true;
         }
-        log.info("false");
+        log.info(" STATE false");
         return false;
     }
 
@@ -90,6 +91,17 @@ public class UserController {
         List<User> userList = userService.findDrivers();
         log.info("User,{}", userList);
         return new ResponseEntity<>(userList, HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/get/managers")
+    public List<User> getManagers() {
+        return userService.findManagers();
+    }
+
+    @GetMapping(value = "/get/list")
+    public List<User> getUserList() {
+        return userService.getUserList();
     }
 
 

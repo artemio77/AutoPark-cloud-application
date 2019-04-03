@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {TransportService} from '../../../../service/transport.service';
+import {TransportEntity} from '../../../../model/transport';
 
 @Component({
   selector: 'app-user-manager-transport-create',
@@ -9,14 +11,17 @@ import {FormGroup} from '@angular/forms';
 export class UserManagerTransportCreateComponent implements OnInit {
 
   private form: FormGroup;
-  
-  constructor() {
+  private transportService: TransportService;
+  private transport: TransportEntity = new TransportEntity();
+
+  constructor(transportService: TransportService) {
+    this.transportService = transportService;
   }
 
   ngOnInit() {
   }
 
   createTransport() {
-
+    this.transportService.createTransport(this.transport);
   }
 }

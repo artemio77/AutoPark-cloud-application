@@ -1,7 +1,7 @@
 logging:
   level:
     org:
-      springframework: debug
+      springframework: info
 server:
   servlet:
     context-path: /auth-service

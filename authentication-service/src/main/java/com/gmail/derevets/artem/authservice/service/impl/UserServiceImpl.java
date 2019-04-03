@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public User registerNewAccount(final User user) {
+        log.info("CREATE USER {}", user);
         User newUser = User.builder()
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
@@ -44,8 +45,9 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
     public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException("User Not Found " + email));
+        return userRepository.findByEmail(email);
     }
 
     @Override
@@ -58,11 +60,21 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByRoleEquals(Role.ROLE_DRIVER);
     }
 
+    @Override
+    public List<User> findManagers() {
+        return userRepository.findByRoleEquals(Role.ROLE_MANAGER);
+    }
+
+    @Override
+    public List<User> getUserList() {
+        return userRepository.findAll();
+    }
+
     public void updateUser(User user) {
         userRepository.save(user);
     }
 
-
+    @Override
     @Transactional
     public User activateUser(Long code) {
         User user =

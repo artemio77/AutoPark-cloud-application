@@ -1,18 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import {User} from '../../../model/user';
 import {AuthService} from '../../../service/auth.service';
 import {UserService} from '../../../service/user.service';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {AppComponent} from '../../app.component';
-import {state} from '@angular/animations';
 import {LoginRegistrationComponent} from '../login.registration.component';
 import {AppService} from '../../../service/app.service';
 import {MatSnackBar} from '@angular/material';
-import {Observable, of} from 'rxjs';
-import {catchError, map} from 'rxjs/internal/operators';
+import {map} from 'rxjs/operators';
+import {$} from 'protractor';
 
 
 @Component({

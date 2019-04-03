@@ -1,13 +1,16 @@
 package com.gmail.derevets.artem.autoparkservice.controller;
 
 import com.gmail.derevets.artem.autoparkservice.model.Transport;
+import com.gmail.derevets.artem.autoparkservice.model.enums.TransportType;
 import com.gmail.derevets.artem.autoparkservice.service.TransportService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import sun.awt.SunHints;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Slf4j
@@ -54,11 +57,19 @@ public class TransportRestController {
         return transportService.getTransportWithAssingRoute();
     }
 
+    @GetMapping("/get/type-list")
+    @ResponseStatus(HttpStatus.OK)
+    private @ResponseBody
+    Map<String, List<TransportType>> getTransportTypeList() {
+        return transportService.getTransportTypeList();
+    }
+
 
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     private @ResponseBody
-    Transport createTransport(@RequestBody Transport transport) {
+    Transport createTransport(@RequestBody Map<String, String> transport) {
+
         return transportService.createTransport(transport);
     }
 

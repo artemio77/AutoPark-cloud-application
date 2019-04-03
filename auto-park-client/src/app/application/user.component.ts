@@ -1,16 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
 import {User} from '../../model/user';
 import {UserService} from '../../service/user.service';
 import {AppService} from '../../service/app.service';
 import {LoadingBarService} from '@ngx-loading-bar/core';
 import {AppComponent} from '../app.component';
-import {AppModule} from '../app.module';
-import {Cookie} from 'ng2-cookies';
 import {Router} from '@angular/router';
-import {map} from 'rxjs/internal/operators';
+import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {AuthService} from '../../service/auth.service';
-import {DialogPosition, MatDialog, MatSidenav} from '@angular/material';
+import {MatDialog, MatSidenav} from '@angular/material';
 import {UserSearchComponent} from './user-search/user-search.component';
 
 @Component({

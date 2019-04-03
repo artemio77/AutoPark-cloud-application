@@ -28,4 +28,11 @@ public interface TransportRepository extends CrudRepository<Transport, UUID> {
     @Query(value = "update transport set user_id= :userId where id= :transportId", nativeQuery = true)
     void assignDriverOnTransport(@Param("userId") UUID userId, @Param("transportId") UUID transportId);
 
+    @Modifying
+    @Query(value = "update transport set route_id= :routeId where id= :transportId", nativeQuery = true)
+    void assignRouteOnTransport(@Param("routeId") UUID routeId, @Param("transportId") UUID transportId);
+
+    @Modifying
+    @Query(value = "update transport set route_id= null where id= :transportId", nativeQuery = true)
+    void removeAssignRouteOnTransport(@Param("transportId") UUID transportId);
 }

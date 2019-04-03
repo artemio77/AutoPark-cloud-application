@@ -4,10 +4,12 @@ import com.gmail.derevets.artem.autoparkservice.model.Route;
 import com.gmail.derevets.artem.autoparkservice.service.RouteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -17,6 +19,25 @@ public class RouteRestController {
 
     @Autowired
     private RouteService routeService;
+
+    @GetMapping("/get")
+    public @ResponseBody
+    Route getRoute(@RequestParam("routeId") UUID id) {
+        return routeService.getRoute(id);
+    }
+
+
+    @GetMapping("/get/route-transport")
+    public @ResponseBody
+    List<Route> filterRouteWithTransport() {
+        return routeService.getRouteListWithTransport();
+    }
+
+    @GetMapping("/get/route-with-drivers")
+    public @ResponseBody
+    List<Route> filterRouteWithDrivers() {
+        return routeService.getRouteListWithDrivers();
+    }
 
     @GetMapping("/get/route-transport-empty")
     public @ResponseBody
@@ -33,6 +54,19 @@ public class RouteRestController {
         return routeList;
     }
 
+    @PatchMapping("/assign-transport")
+    @ResponseStatus(HttpStatus.OK)
+    public Route assignTransport(@RequestParam("transportId") String transportId,
+                                 @RequestParam("routeId") String routeId) {
+        return routeService.assignTransport(UUID.fromString(transportId), UUID.fromString(routeId));
+    }
+
+    @PatchMapping("/remove-assign-transport")
+    @ResponseStatus(HttpStatus.OK)
+    public Route removeAssignTransport(@RequestParam("transportId") String transportId,
+                                       @RequestParam("routeId") String routeId) {
+        return routeService.removeAssignTransport(UUID.fromString(transportId), UUID.fromString(routeId));
+    }
 
     @PostMapping("/create")
     public @ResponseBody

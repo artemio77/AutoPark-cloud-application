@@ -16,6 +16,10 @@ public interface UserService {
 
     List<User> findDrivers();
 
+    List<User> findManagers();
+
+    List<User> getUserList();
+
     void updateUser(User user);
 
     User activateUser(Long verificationCode);

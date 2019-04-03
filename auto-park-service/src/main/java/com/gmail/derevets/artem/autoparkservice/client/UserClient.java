@@ -34,5 +34,16 @@ public interface UserClient {
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     List<User> getDrivers();
 
+    @RequestMapping(method = RequestMethod.GET, value = "/auth-service/authManagement/get/managers",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    List<User> getManagers();
 
+    @RequestMapping(method = RequestMethod.GET, value = "/auth-service/authManagement/get/list",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    List<User> getUserList();
+
+
+    @RequestMapping(method = RequestMethod.POST, value = "/auth-service/authManagement/exist/{email:.+}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    Boolean emailExistCheck(@PathVariable String email);
 }

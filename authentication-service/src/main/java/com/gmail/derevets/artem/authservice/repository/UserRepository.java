@@ -25,7 +25,7 @@ public interface UserRepository extends JpaRepository<User, UUID> {
 
     User save(User user);
 
-    Optional<User> findByEmail(String email);
+    User findByEmail(String email);
 
     @Query(value = "SELECT ua.email FROM user_accounts ua WHERE ua.verification_code = :verification_code", nativeQuery = true)
     String checkUniqueVerificationCode(@Param("verification_code") Long verificationCode);

@@ -1,9 +1,8 @@
-import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {LoadingBarService} from '@ngx-loading-bar/core';
 import {AppService} from '../../../service/app.service';
 import {UserService} from '../../../service/user.service';
-import {Cookie} from 'ng2-cookies';
 
 @Component({
   selector: 'app-user-content',

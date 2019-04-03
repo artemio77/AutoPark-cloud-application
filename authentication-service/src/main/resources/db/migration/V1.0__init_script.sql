@@ -160,7 +160,8 @@ create table if not exists route
   modification_time timestamp with time zone not null,
   name              varchar(256)             not null,
   description       text,
-  route_number      integer                  not null
+  route_number      integer                  not null,
+  version           int
 );
 
 alter table route
