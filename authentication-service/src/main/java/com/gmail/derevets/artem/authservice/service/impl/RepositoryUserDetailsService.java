@@ -40,7 +40,7 @@ public class RepositoryUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         log.info("Loading user by username: {}", username);
-        Optional<User> optionalUser = repository.findByEmail(username);
+        Optional<User> optionalUser = Optional.ofNullable(repository.findByEmail(username));
         return optionalUser.map(this::userDetailsEntity)
                 .orElseThrow(() -> new UserNotFoundException("User Not Found: " + username));
     }

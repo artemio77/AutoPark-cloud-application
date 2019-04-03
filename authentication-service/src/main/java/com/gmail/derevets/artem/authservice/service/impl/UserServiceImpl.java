@@ -78,8 +78,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User activateUser(Long code) {
         User user =
-                userRepository.findByEmail(userRepository.checkUniqueVerificationCode(code))
-                        .orElseThrow(() -> new IllegalArgumentException("Invalid Activation Code"));
+                userRepository.findByEmail(userRepository.checkUniqueVerificationCode(code));
         if (!user.getIsEnabled()) {
             user.setIsEnabled(true);
             user.setVerificationCode(null);
