@@ -1,0 +1,25 @@
+<div class="container-assign">
+  <h1>Route</h1>
+  <mat-card class="container-assign">
+    <h2>ID - {{data.id}}</h2>
+    <h2>Name - {{data.name}}</h2>
+  </mat-card>
+  <div class="row">
+    <div class="col-6">
+      <form class="container-assign">
+        <h1>Assing Transport</h1>
+        <mat-form-field style="width: 100%">
+          <mat-label [hidden]="!disableSelect">Choose User</mat-label>
+          <mat-select [(ngModel)]="selectedRouteId" name="userEmail" [disabled]="disableSelect">
+            <mat-option *ngFor="let transport of transportList" [value]="transport.id">
+              {{transport.name}}
+              {{transport.numberPlate}}
+            </mat-option>
+          </mat-select>
+          <mat-label [hidden]="!disableSelect">No available transport</mat-label>
+        </mat-form-field>
+        <button mat-raised-button (click)="assignTransport(selectedRouteId, data.id)">Assign</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2%;
+  height: 27vh;
+
+}
+
+.example-container > * {
+  width: 100%;
+}

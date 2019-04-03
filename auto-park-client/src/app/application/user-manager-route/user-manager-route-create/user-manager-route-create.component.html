@@ -1,0 +1,39 @@
+<div class="transport-create-form">
+  <form (submit)="createRoute()" [formGroup]="form" class="transport-create-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="route.name"
+             formControlName="name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Name</mat-hint>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Route Number</mat-label>
+      <input matInput type="number" maxlength="10" [(ngModel)]="route.routeNumber"
+             oninput="this.value=this.value.replace(/[^0-9]/g,'');" formControlName="routeNumber"
+             [formControl]="routeNumberFormControl">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Route Number</mat-hint>
+      <mat-error *ngIf="routeNumberFormControl.hasError('required')">
+        Route Number is required
+      </mat-error>
+    </mat-form-field>
+    <h1>Assign Transport</h1>
+    <mat-form-field style="width: 100%">
+      <mat-label [hidden]="!disableSelect">Choose Transport</mat-label>
+      <mat-select [(ngModel)]="selectedTransportId" name="transport" [disabled]="disableSelect" formControlName="transport">
+        <mat-option *ngFor="let transport of transportList" [value]="transport.id">
+          {{transport.name}}
+          {{transport.numberPlate}}
+        </mat-option>
+      </mat-select>
+      <mat-label [hidden]="!disableSelect">No available transport</mat-label>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">
+      Create
+    </button>
+  </form>
+</div>

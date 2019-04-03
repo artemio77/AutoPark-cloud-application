@@ -1,0 +1,56 @@
+<div>
+  <div class="row">
+    <div class="col-3">
+      <button mat-raised-button color="primary" (click)="createUser()">Create</button>
+    </div>
+    <div class="col-3">
+      <mat-slide-toggle [checked]="assignUserFilterChecked" (change)="toggleAssignUserFilter($event)">Transport With
+        Managers
+      </mat-slide-toggle>
+    </div>
+    <div class="col-3">
+      <mat-slide-toggle [checked]="assignRouteFilterChecked" (change)="toggleAssignRouteFilter($event)">Transport With
+        Divers
+      </mat-slide-toggle>
+    </div>
+  </div>
+  <div class="example-container">
+    <table mat-table [dataSource]="dataSource" style="width: 100%">
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id</th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email</th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef> First Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef> Last Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+      </ng-container>
+      <ng-container matColumnDef="creationTime">
+        <th mat-header-cell *matHeaderCellDef>Creation Time</th>
+        <td mat-cell *matCellDef="let element"> {{element.creationTime}} </td>
+      </ng-container>
+      <ng-container matColumnDef="modificationTime">
+        <th mat-header-cell *matHeaderCellDef>Modification Time</th>
+        <td mat-cell *matCellDef="let element"> {{element.modificationTime}} </td>
+      </ng-container>
+      <ng-container matColumnDef="isEnabled">
+        <th mat-header-cell *matHeaderCellDef>Activated</th>
+        <td mat-cell *matCellDef="let element"> {{element.isEnabled}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

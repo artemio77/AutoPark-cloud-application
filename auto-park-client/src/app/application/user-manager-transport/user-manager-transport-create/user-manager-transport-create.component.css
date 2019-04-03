@@ -1,0 +1,10 @@
+.transport-create-form {
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.transport-create-form > * {
+  width: 100%;
+
+}

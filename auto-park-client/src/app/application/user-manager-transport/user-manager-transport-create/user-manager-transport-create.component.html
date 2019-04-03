@@ -1,0 +1,45 @@
+<div class="transport-create-form">
+  <form (submit)="createTransport()" [formGroup]="form" class="transport-create-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="transport.name"
+             formControlName="name">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Name</mat-hint>
+      <mat-error *ngIf="nameFormControl.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Number Plate</mat-label>
+      <input matInput placeholder="Number Plate" [(ngModel)]="transport.numberPlate"
+             formControlName="numberPlate">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Number Plate</mat-hint>
+      <mat-error *ngIf="numberPlateFormControl.hasError('required')">
+        Number Plate is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(ngModel)]="transport.currentAssignUser" [disabled]="disableSelectUser"
+                  formControlName="email">
+        <mat-option *ngFor="let user of userArray" [value]="user.email">
+          {{user.email}}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Assign User</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select [(ngModel)]="transport.transportType" [disabled]="disableSelectTransportType"
+                  formControlName="transportType">
+        <mat-option *ngFor="let type of transportType.value" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Transport Type</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">
+      Create
+    </button>
+  </form>
+</div>

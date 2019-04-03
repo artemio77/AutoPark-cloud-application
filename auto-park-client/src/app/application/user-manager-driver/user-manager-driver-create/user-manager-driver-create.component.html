@@ -1,0 +1,69 @@
+<div>
+  <form (submit)="registration()" [formGroup]="form" class="container-create">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" [(ngModel)]="user.firstName" [formControl]="firstNameFormControl"
+             formControlName="firstName"
+             type="text">
+    </mat-form-field>
+    <mat-error *ngIf="firstNameFormControl.hasError('pattern') && !firstNameFormControl.hasError('required')">
+      Please enter a valid name
+    </mat-error>
+    <mat-error *ngIf="firstNameFormControl.hasError('required')">
+      Name is required
+    </mat-error>
+    <mat-form-field>
+      <mat-label>Surname</mat-label>
+      <input matInput placeholder="Surname" [(ngModel)]="user.lastName" [formControl]="surnameFormControl"
+             formControlName="lastName"
+             type="text">
+    </mat-form-field>
+    <mat-error *ngIf="surnameFormControl.hasError('pattern') && !surnameFormControl.hasError('required')">
+      Please enter a valid surname
+    </mat-error>
+    <mat-error *ngIf="surnameFormControl.hasError('required')">
+      Surname is required
+    </mat-error>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="E-mail" [(ngModel)]="user.email" [formControl]="emailFormControl"
+             formControlName="email"
+             type="email"
+             id="email">
+    </mat-form-field>
+    <mat-error *ngIf="emailFormControl.hasError('exists') && !emailFormControl.hasError('required')">
+      This email already used
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is required
+    </mat-error>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password" [(ngModel)]="user.password" formControlName="password" id="password"
+             [formControl]="passwordFormControl"
+             type="password">
+
+      <mat-error *ngIf="passwordFormControl.hasError('required')">
+        Password is required
+      </mat-error>
+      <mat-error *ngIf="passwordFormControl.hasError('min') && !passwordFormControl.hasError('required')">
+        Minimal password length 4 symbols
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select [(ngModel)]="user.role" formControlName="role" id="role">
+        <mat-option *ngFor="let role of role.value" [value]="role">
+          {{role}}
+        </mat-option>
+      </mat-select>
+      <mat-hint>Transport Type</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" type="submit">Registration
+    </button>
+  </form>
+</div>
