@@ -1,5 +1,6 @@
 package com.gmail.derevets.artem.autoparkservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -57,6 +58,15 @@ public class User extends BaseEntity<UUID> implements Serializable {
 
     @Column(name = "verification_code", unique = true)
     private Long verificationCode;
+
+    @JsonIgnore
+    @OneToOne(mappedBy = "currentAssignUser", cascade = CascadeType.ALL)
+    private Transport transport;
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "route_id")
+    private Route route;
 
     @Override
     public String toString() {

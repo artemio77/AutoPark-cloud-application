@@ -35,6 +35,7 @@ public class Transport extends BaseEntity<UUID> {
     private Route currentRouteAssign;
 
     @OneToOne
+    @JsonBackReference
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User currentAssignUser;
 

@@ -1,6 +1,7 @@
 package com.gmail.derevets.artem.autoparkservice.service;
 
 import com.gmail.derevets.artem.autoparkservice.model.Route;
+import com.gmail.derevets.artem.autoparkservice.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ public interface RouteService {
 
     Route getRoute(UUID id);
 
+    Route getRouteByUser(User user);
 
     List<Route> getRouteListWithoutTransport();
 

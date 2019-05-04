@@ -191,6 +191,13 @@ alter table transport
 
 create unique index if not exists transport_transport_id_uindex
   on transport (id);
+alter table user_accounts
+  add route_id uuid;
+alter table user_accounts
+  add constraint user_accounts_route_id_fk
+    foreign key (route_id) references route;
+
+
 
 INSERT INTO public.oauth_client_details (client_id, resource_ids, client_secret, scope, authorized_grant_types,
                                          web_server_redirect_uri, authorities, access_token_validity,
@@ -209,9 +216,9 @@ VALUES ('cloud-auto-park-service-password-grant-client', 'cloud-auto-park-servic
 
 INSERT INTO public.user_accounts (id, creation_time, email, first_name, last_name, modification_time, password, role,
                                   sign_in_provider, version, is_account_non_locked, is_account_non_expired,
-                                  is_credentials_non_expired, is_enabled, verification_code)
+                                  is_credentials_non_expired, is_enabled, verification_code, route_id)
 VALUES ('c6d39e0f-4c76-11e9-b85c-c5df26c8028a', '2019-03-22 09:47:43.712000', 'derevets.artem@gmail.com', 'artem',
         'derevets', '2019-03-22 10:14:50.649000', '$2a$12$pDxLJJdCg5iWursiQcAzW.lJm02i4w8Wdyj6plWynTyDDHWNWIp4i',
-        'ROLE_DRIVER', null, 1, true, true, true, true, null);
+        'ROLE_DRIVER', null, 1, true, true, true, true, null, null);
 
 

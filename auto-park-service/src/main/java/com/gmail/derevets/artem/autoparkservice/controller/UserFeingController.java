@@ -1,10 +1,15 @@
 package com.gmail.derevets.artem.autoparkservice.controller;
 
 import com.gmail.derevets.artem.autoparkservice.client.UserClient;
+import com.gmail.derevets.artem.autoparkservice.model.Route;
+import com.gmail.derevets.artem.autoparkservice.model.Transport;
 import com.gmail.derevets.artem.autoparkservice.model.User;
 import com.gmail.derevets.artem.autoparkservice.model.enums.Role;
 import com.gmail.derevets.artem.autoparkservice.model.enums.TransportType;
+import com.gmail.derevets.artem.autoparkservice.service.RouteService;
+import com.gmail.derevets.artem.autoparkservice.service.TransportService;
 import com.gmail.derevets.artem.autoparkservice.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,14 +21,17 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/user-management-service")
 public class UserFeingController {
 
-    @Autowired
-    private UserClient userClient;
+    private final UserClient userClient;
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    private final TransportService transportService;
+
+    private final RouteService routeService;
 
     @PutMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
@@ -112,5 +120,23 @@ public class UserFeingController {
         return userService.getRoleList();
     }
 
+
+    @GetMapping("/get/driver-transport")
+    private Transport getDriverTransport(@RequestParam("email") String email) {
+        User user = userClient.getUserByEmail(email);
+        if (Role.ROLE_MANAGER.equals(user.getRole())) {
+            throw new RuntimeException("Unexpected user role" + user.getRole());
+        }
+        return transportService.getTransportByUser(user);
+    }
+
+    @GetMapping("/get/driver-route")
+    private Route getDriverRoute(@RequestParam("email") String email) {
+        User user = userClient.getUserByEmail(email);
+        if (Role.ROLE_MANAGER.equals(user.getRole())) {
+            throw new RuntimeException("Unexpected user role" + user.getRole());
+        }
+        return routeService.getRouteByUser(user);
+    }
 
 }

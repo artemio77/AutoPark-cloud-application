@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Data
@@ -24,8 +25,12 @@ public class Route extends BaseEntity<UUID> {
     @Column(name = "route_number")
     private Integer routeNumber;
 
-    @JsonManagedReference
+    @JsonBackReference
     @OneToMany(mappedBy = "currentRouteAssign", cascade = CascadeType.ALL)
-    private List<Transport> transport;
+    private Set<Transport> transport;
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    private Set<User> users;
 
 }

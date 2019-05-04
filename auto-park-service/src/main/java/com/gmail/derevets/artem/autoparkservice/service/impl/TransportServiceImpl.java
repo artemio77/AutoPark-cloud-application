@@ -1,6 +1,7 @@
 package com.gmail.derevets.artem.autoparkservice.service.impl;
 
 import com.gmail.derevets.artem.autoparkservice.client.UserClient;
+import com.gmail.derevets.artem.autoparkservice.exception.transport.TransportNotFoundException;
 import com.gmail.derevets.artem.autoparkservice.model.Transport;
 import com.gmail.derevets.artem.autoparkservice.model.User;
 import com.gmail.derevets.artem.autoparkservice.model.enums.TransportType;
@@ -22,6 +23,11 @@ public class TransportServiceImpl implements TransportService {
 
     @Autowired
     private UserClient userClient;
+
+    @Override
+    public Transport getTransportByUser(User user) {
+        return transportRepository.findByCurrentAssignUser(user).orElseThrow(TransportNotFoundException::new);
+    }
 
     @Override
     public List<Transport> getTransportList() {

@@ -3,9 +3,11 @@ package com.gmail.derevets.artem.autoparkservice.service.impl;
 import com.gmail.derevets.artem.autoparkservice.exception.route.RouteNotFoundException;
 import com.gmail.derevets.artem.autoparkservice.model.Route;
 import com.gmail.derevets.artem.autoparkservice.model.Transport;
+import com.gmail.derevets.artem.autoparkservice.model.User;
 import com.gmail.derevets.artem.autoparkservice.repository.RouteRepository;
 import com.gmail.derevets.artem.autoparkservice.repository.TransportRepository;
 import com.gmail.derevets.artem.autoparkservice.service.RouteService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,17 +20,21 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class RouteServiceImpl implements RouteService {
 
-    @Autowired
-    private RouteRepository routeRepository;
+    private final RouteRepository routeRepository;
 
-    @Autowired
-    private TransportRepository transportRepository;
+    private final TransportRepository transportRepository;
 
     @Override
     public Route getRoute(UUID id) {
         return routeRepository.findById(id).orElseThrow(RouteNotFoundException::new);
+    }
+
+    @Override
+    public Route getRouteByUser(User user) {
+        return routeRepository.findByUsersIn(user).orElseThrow(RouteNotFoundException::new);
     }
 
     @Override
