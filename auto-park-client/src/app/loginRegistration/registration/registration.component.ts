@@ -10,6 +10,7 @@ import {LoginRegistrationComponent} from '../login.registration.component';
 import {AppService} from '../../../service/app.service';
 import {MatSnackBar} from '@angular/material';
 import {map} from 'rxjs/internal/operators';
+import {Role} from '../../../model/create/role.type';
 
 
 @Component({
@@ -24,18 +25,21 @@ export class RegistrationComponent implements OnInit {
   private loading = false;
   private error = false;
   private user: User = new User();
+  private role: Role = new Role();
   private code;
   private email: string;
   private credentials = {login: '', password: ''};
   private invalidCode: boolean;
   private state = false;
 
-  constructor(private auth: AuthService, private users: UserService,
-              private http: HttpClient, private router: Router,
-              private formBuilder: FormBuilder,
-              private loginRegistrationComponent: LoginRegistrationComponent,
-              private appService: AppService,
-              private snackBar: MatSnackBar) {
+  constructor(
+    private userService: UserService,
+    private auth: AuthService, private users: UserService,
+    private http: HttpClient, private router: Router,
+    private formBuilder: FormBuilder,
+    private loginRegistrationComponent: LoginRegistrationComponent,
+    private appService: AppService,
+    private snackBar: MatSnackBar) {
   }
 
   codeFormControl = new FormControl('', [
@@ -75,7 +79,8 @@ export class RegistrationComponent implements OnInit {
         Validators.min(2),
         Validators.max(30)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]]
+      password: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9]*$')]],
+      role: ['', Validators.required]
     });
     this.secondFormGroup = this.formBuilder.group({
       code: ['', [Validators.required,
@@ -83,6 +88,7 @@ export class RegistrationComponent implements OnInit {
         Validators.maxLength(5),
         Validators.minLength(5)]]
     });
+    this.getRoleList();
 
   }
 
@@ -114,6 +120,14 @@ export class RegistrationComponent implements OnInit {
 
   }
 
+  getRoleList() {
+    this.userService.getRoleList()
+      .subscribe(response => {
+        this.role = response;
+      });
+    if (typeof this.role.value !== 'undefined' && this.role.value.length > 0) {
+    }
+  }
 
   registration() {
     this.state = true;

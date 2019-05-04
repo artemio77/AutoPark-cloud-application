@@ -7,7 +7,7 @@ table {
 }
 
 .example-container {
-  max-height: 700px;
+  max-height: 70%;
   overflow: auto;
 }
 

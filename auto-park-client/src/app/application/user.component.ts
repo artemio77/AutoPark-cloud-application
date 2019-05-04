@@ -38,11 +38,11 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.authService.getAuthUser(localStorage.getItem('login')).pipe(map(data => this.user = data));
     this.currentUser.subscribe(data => this.user = data);
-    if (this.roleGuardService.role === 'ROLE_MANAGER') {
-      console.log('dsadas');
+    if (this.roleGuardService.getRole() === 'ROLE_MANAGER') {
       this._router.navigate(['application/route', localStorage.getItem('login')]);
+    } else {
+      this._router.navigate(['application/view', localStorage.getItem('login')]);
     }
-    this._router.navigate(['application/view', localStorage.getItem('login')]);
   }
 
   public getUser() {

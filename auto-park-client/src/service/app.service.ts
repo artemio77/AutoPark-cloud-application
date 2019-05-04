@@ -3,8 +3,6 @@ import {Router} from '@angular/router';
 import {Cookie} from 'ng2-cookies';
 import {Headers, Http, RequestOptions} from '@angular/http';
 import {MatSnackBar} from '@angular/material';
-import {UserService} from './user.service';
-import {User} from '../model/user';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
 
@@ -34,7 +32,7 @@ export class AppService {
     this._http.post(this.oauthUrl + '/oauth/token', params.toString(), options)
       .subscribe(
         data => {
-          this.saveToken(data.json(), loginData.login, loginData.password);
+          this.saveToken(data.json(), loginData.login);
           this.setAuthLogin(loginData.login);
         },
         err => this.snackBar.open('Invalid Cradentials, please try again', 'Log In', {
@@ -42,7 +40,7 @@ export class AppService {
         }));
   }
 
-  saveToken(token, login, password) {
+  saveToken(token, login) {
     const expireDate = new Date().getTime() + (1000 * token.expires_in);
     Cookie.set('access_token', token.access_token, expireDate);
     localStorage.setItem('login', login);

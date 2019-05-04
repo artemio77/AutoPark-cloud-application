@@ -44,10 +44,10 @@ export class UserManagerTransportCreateComponent implements OnInit {
         Validators.min(2),
         Validators.max(30)]],
       numberPlate: ['', [Validators.required,
-        Validators.pattern('^[a-zA-Z_]*$'),
+        Validators.pattern('^[a-zA-Z0-9]*$'),
         Validators.min(2),
         Validators.max(30)]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', []],
       transportType: ['', [Validators.required]]
 
     });

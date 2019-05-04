@@ -7,9 +7,9 @@ import {Http} from '@angular/http';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Cookie} from 'ng2-cookies';
 import {environment} from '../environments/environment';
-import {map} from 'rxjs/operators';
-import {TransportType} from '../model/create/transport.type';
 import {Role} from '../model/create/role.type';
+import {TransportEntity} from '../model/transport';
+import {RouteEntity} from '../model/route';
 
 
 @Injectable()
@@ -22,7 +22,7 @@ export class UserService {
               private httpClient: HttpClient) {
   }
 
-  public getAllUserLsit(): Observable<User[]> {
+  public getAllUserList(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.oauthApiUrl + '/user-management-service/get/all', {responseType: 'json'});
   }
 
@@ -36,7 +36,11 @@ export class UserService {
   }
 
   public getUserCode(code: number) {
-    return this.http.get(this.oauthApiUrl + '/auth/' + code);
+    const headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Authorization': 'Bearer ' + Cookie.get('access_token')
+    });
+    return this.http.post(this.oauthApiUrl + '/user-management-service/activate/' + code, {headers: headers});
   }
 
   public getUserByEmail(email: string): Observable<User> {
@@ -59,5 +63,32 @@ export class UserService {
 
   public getRoleList(): Observable<Role> {
     return this.httpClient.get<Role>(this.oauthApiUrl + '/user-management-service/get/role-list', {responseType: 'json'});
+  }
+
+
+  public getRouteInfoForDriver(email: string) {
+    const params = new HttpParams().set('email', email);
+    const headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Authorization': 'Bearer ' + Cookie.get('access_token')
+    });
+    return this.httpClient.get<RouteEntity>(this.oauthApiUrl + '/user-management-service/get/driver-route', {
+      headers: headers,
+      params: params,
+      responseType: 'json'
+    });
+  }
+
+  public getTransportInfoForDriver(email: string) {
+    const params = new HttpParams().set('email', email);
+    const headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Authorization': 'Bearer ' + Cookie.get('access_token')
+    });
+    return this.httpClient.get<TransportEntity>(this.oauthApiUrl + '/user-management-service/get/driver-transport', {
+      headers: headers,
+      params: params,
+      responseType: 'json'
+    });
   }
 }

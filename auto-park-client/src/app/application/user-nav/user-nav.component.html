@@ -1,4 +1,4 @@
-<mat-nav-list *ngIf="roleGuardService.role === 'ROLE_DRIVER'">
+<mat-nav-list *ngIf="roleGuardService.role === 'ROLE_MANAGER'">
   <mat-list-item>
     {{user.firstName}} {{user.lastName}}
   </mat-list-item>
@@ -14,7 +14,7 @@
   <mat-list-item (click)="logout()">Logout</mat-list-item>
 </mat-nav-list>
 
-<mat-nav-list *ngIf="roleGuardService.role === 'ROLE_MANAGER'">
+<mat-nav-list *ngIf="roleGuardService.role === 'ROLE_DRIVER'">
   <mat-list-item>
     {{user.firstName}} {{user.lastName}}
   </mat-list-item>

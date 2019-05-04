@@ -72,7 +72,7 @@ export class UserManagerTransportComponent implements OnInit {
       height: '70vh',
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.createTable();
     });
   }
 

@@ -31,7 +31,7 @@ export class UserManagerDriverComponent implements OnInit {
   }
 
   createTable() {
-    this.userService.getAllUserLsit()
+    this.userService.getAllUserList()
       .subscribe(res => {
         this.dataSource.data = res as User[];
       });
