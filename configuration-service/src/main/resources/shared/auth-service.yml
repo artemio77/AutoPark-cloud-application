@@ -32,5 +32,12 @@ spring:
     locations: classpath:db/migration
 
 
+eureka:
+  instance:
+    appname: ${EUREKA_AUTH_SERVICE_APP_NAME}
+  client:
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL}
 
 

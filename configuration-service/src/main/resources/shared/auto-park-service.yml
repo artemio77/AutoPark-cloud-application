@@ -40,3 +40,12 @@ security:
       resource:
         token-info-uri: ${AUTH_SERVICE_URL}/auth-service/oauth/check_token
 
+
+eureka:
+  instance:
+    appname: ${EUREKA_AUTO_PARK_APP_NAME}  # ==> This is a instance of ABC-SERVICE
+  client:
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL}
+
