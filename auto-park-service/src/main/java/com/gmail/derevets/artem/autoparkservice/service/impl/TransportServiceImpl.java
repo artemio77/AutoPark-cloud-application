@@ -18,11 +18,15 @@ import java.util.*;
 @Service
 public class TransportServiceImpl implements TransportService {
 
-    @Autowired
-    private TransportRepository transportRepository;
+    private final TransportRepository transportRepository;
+
+    private final UserClient userClient;
 
     @Autowired
-    private UserClient userClient;
+    public TransportServiceImpl(TransportRepository transportRepository, UserClient userClient) {
+        this.transportRepository = transportRepository;
+        this.userClient = userClient;
+    }
 
     @Override
     public Transport getTransportByUser(User user) {

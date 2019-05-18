@@ -139,7 +139,6 @@
             <artifactId>spring-cloud-security</artifactId>
             <version>2.1.2.RELEASE</version>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>

@@ -5,10 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.gmail.derevets.artem.autoparkservice.model.enums.Role;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
@@ -59,10 +56,13 @@ public class User extends BaseEntity<UUID> implements Serializable {
     @Column(name = "verification_code", unique = true)
     private Long verificationCode;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @JsonIgnore
     @OneToOne(mappedBy = "currentAssignUser", cascade = CascadeType.ALL)
     private Transport transport;
-
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "route_id")
