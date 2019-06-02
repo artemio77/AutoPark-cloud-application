@@ -38,6 +38,6 @@ eureka:
   client:
     fetchRegistry: true
     serviceUrl:
-      defaultZone: ${EUREKA_SERVER_URL}
+      defaultZone: ${EUREKA_SERVER_URL}/eureka
 
 
