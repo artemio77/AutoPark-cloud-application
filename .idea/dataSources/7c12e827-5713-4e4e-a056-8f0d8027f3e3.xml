@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="application@172.29.171.141">
+  <database-model serializer="dbm" dbms="CASSANDRA" family-id="CASSANDRA" format-version="4.14">
+    <root id="1">
+      <ServerVersion>3.0.8</ServerVersion>
+    </root>
+    <schema id="2" parent="1" name="application">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;1&apos;}</Replication>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="system">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.LocalStrategy&apos;}</Replication>
+    </schema>
+    <schema id="4" parent="1" name="system_auth">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;1&apos;}</Replication>
+    </schema>
+    <schema id="5" parent="1" name="system_distributed">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;3&apos;}</Replication>
+    </schema>
+    <schema id="6" parent="1" name="system_schema">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.LocalStrategy&apos;}</Replication>
+    </schema>
+    <schema id="7" parent="1" name="system_traces">
+      <Replication>{&apos;class&apos;: &apos;org.apache.cassandra.locator.SimpleStrategy&apos;, &apos;replication_factor&apos;: &apos;2&apos;}</Replication>
+    </schema>
+    <role id="8" parent="1" name="cassandra">
+      <SuperRole>1</SuperRole>
+      <CanLogin>1</CanLogin>
+    </role>
+    <table id="9" parent="2" name="chat">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;ALL&apos;}</Caching>
+      <Compaction>{&apos;class&apos;: &apos;SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;sstable_compression&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+    </table>
+    <table id="10" parent="2" name="contact">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;ALL&apos;}</Caching>
+      <Compaction>{&apos;class&apos;: &apos;SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;sstable_compression&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+    </table>
+    <table id="11" parent="2" name="message">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;ALL&apos;}</Caching>
+      <Compaction>{&apos;class&apos;: &apos;SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;sstable_compression&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+    </table>
+    <table id="12" parent="2" name="user">
+      <Caching>{&apos;keys&apos;: &apos;ALL&apos;, &apos;rows_per_partition&apos;: &apos;ALL&apos;}</Caching>
+      <Compaction>{&apos;class&apos;: &apos;SizeTieredCompactionStrategy&apos;}</Compaction>
+      <Compression>{&apos;sstable_compression&apos;: &apos;org.apache.cassandra.io.compress.LZ4Compressor&apos;}</Compression>
+      <DclocalReadRepairChance>0.1</DclocalReadRepairChance>
+    </table>
+    <object-type id="13" parent="2" name="chat"/>
+    <object-type id="14" parent="2" name="contact_user"/>
+    <key id="15" parent="9" name="primary key">
+      <Columns>participant
+id|ASC
+chat_type|ASC
+user_type_list|ASC
+</Columns>
+    </key>
+    <column id="16" parent="9" name="participant">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="17" parent="9" name="id">
+      <Position>2</Position>
+      <DataType>timeuuid|0s</DataType>
+    </column>
+    <column id="18" parent="9" name="chat_type">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="19" parent="9" name="user_type_list">
+      <Position>4</Position>
+      <DataType>frozen&lt;set&lt;frozen&lt;contact_user&gt;&gt;&gt;|0s</DataType>
+    </column>
+    <column id="20" parent="9" name="creation_time">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="21" parent="9" name="description">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="22" parent="9" name="modification_time">
+      <Position>7</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="23" parent="9" name="version">
+      <Position>8</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="24" parent="10" name="primary key">
+      <Columns>contact_id
+user_type_list|ASC
+id|ASC
+</Columns>
+    </key>
+    <column id="25" parent="10" name="contact_id">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="26" parent="10" name="user_type_list">
+      <Position>2</Position>
+      <DataType>frozen&lt;set&lt;frozen&lt;contact_user&gt;&gt;&gt;|0s</DataType>
+    </column>
+    <column id="27" parent="10" name="id">
+      <Position>3</Position>
+      <DataType>timeuuid|0s</DataType>
+    </column>
+    <column id="28" parent="10" name="creation_time">
+      <Position>4</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="29" parent="10" name="modification_time">
+      <Position>5</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="30" parent="10" name="version">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="31" parent="11" name="primary key">
+      <Columns>chatid
+id|ASC
+</Columns>
+    </key>
+    <column id="32" parent="11" name="chatid">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </column>
+    <column id="33" parent="11" name="id">
+      <Position>2</Position>
+      <DataType>timeuuid|0s</DataType>
+    </column>
+    <column id="34" parent="11" name="creation_time">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="35" parent="11" name="message_text">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="36" parent="11" name="message_type">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="37" parent="11" name="modification_time">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="38" parent="11" name="version">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <key id="39" parent="12" name="primary key">
+      <Columns>id
+email|ASC
+</Columns>
+    </key>
+    <column id="40" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>timeuuid|0s</DataType>
+    </column>
+    <column id="41" parent="12" name="email">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="42" parent="12" name="creation_time">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="43" parent="12" name="first_name">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="44" parent="12" name="is_enabled">
+      <Position>5</Position>
+      <DataType>boolean|0s</DataType>
+    </column>
+    <column id="45" parent="12" name="last_name">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="46" parent="12" name="modification_time">
+      <Position>7</Position>
+      <DataType>timestamp|0s</DataType>
+    </column>
+    <column id="47" parent="12" name="role">
+      <Position>8</Position>
+      <DataType>text|0s</DataType>
+    </column>
+    <column id="48" parent="12" name="version">
+      <Position>9</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <object-attribute id="49" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>timeuuid|0s</DataType>
+    </object-attribute>
+    <object-attribute id="50" parent="13" name="creationtime">
+      <Position>2</Position>
+      <DataType>timestamp|0s</DataType>
+    </object-attribute>
+    <object-attribute id="51" parent="13" name="modificationtime">
+      <Position>3</Position>
+      <DataType>timestamp|0s</DataType>
+    </object-attribute>
+    <object-attribute id="52" parent="13" name="version">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </object-attribute>
+    <object-attribute id="53" parent="13" name="chat_type">
+      <Position>5</Position>
+      <DataType>text|0s</DataType>
+    </object-attribute>
+    <object-attribute id="54" parent="13" name="participant">
+      <Position>6</Position>
+      <DataType>uuid|0s</DataType>
+    </object-attribute>
+    <object-attribute id="55" parent="13" name="description">
+      <Position>7</Position>
+      <DataType>text|0s</DataType>
+    </object-attribute>
+    <object-attribute id="56" parent="14" name="id">
+      <Position>1</Position>
+      <DataType>uuid|0s</DataType>
+    </object-attribute>
+    <object-attribute id="57" parent="14" name="email">
+      <Position>2</Position>
+      <DataType>text|0s</DataType>
+    </object-attribute>
+    <object-attribute id="58" parent="14" name="firstname">
+      <Position>3</Position>
+      <DataType>text|0s</DataType>
+    </object-attribute>
+    <object-attribute id="59" parent="14" name="lastname">
+      <Position>4</Position>
+      <DataType>text|0s</DataType>
+    </object-attribute>
+  </database-model>
+</dataSource>

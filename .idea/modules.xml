@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AutoPark.iml" filepath="$PROJECT_DIR$/AutoPark.iml" />
+      <module fileurl="file://$PROJECT_DIR$/authentication-service/authentication-service.iml" filepath="$PROJECT_DIR$/authentication-service/authentication-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/auto-park-client/auto-park-client-service.iml" filepath="$PROJECT_DIR$/auto-park-client/auto-park-client-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/auto-park-service/auto-park-service.iml" filepath="$PROJECT_DIR$/auto-park-service/auto-park-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/chat-service/chat-service.iml" filepath="$PROJECT_DIR$/chat-service/chat-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/configuration-service/configuration-service.iml" filepath="$PROJECT_DIR$/configuration-service/configuration-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/eureka-service/eureka-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gateway-service/gateway-service.iml" filepath="$PROJECT_DIR$/gateway-service/gateway-service.iml" />
+    </modules>
+  </component>
+</project>
