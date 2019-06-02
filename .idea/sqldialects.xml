@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/authentication-service/src/main/resources/db/migration/V1.0__init_script.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/auto-park-service/src/main/resources/migrate.cql" dialect="CassandraQL" />
-    <file url="file://$PROJECT_DIR$/configuration-service/src/main/resources/migration/V1.0__init_script.sql" dialect="PostgreSQL" />
-  </component>
-</project>
