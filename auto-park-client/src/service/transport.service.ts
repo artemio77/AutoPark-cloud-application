@@ -19,7 +19,7 @@ export class TransportService {
 
   public getTransportList(): Observable<TransportEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -32,7 +32,7 @@ export class TransportService {
 
   public getTransportWithoutDriver(): Observable<TransportEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -41,7 +41,7 @@ export class TransportService {
 
   public getTransportWithDriver(): Observable<TransportEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -50,7 +50,7 @@ export class TransportService {
 
   public getTransportWithRoute(): Observable<TransportEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -59,7 +59,7 @@ export class TransportService {
 
   public getTransportWithOutRoute(): Observable<TransportEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -75,7 +75,7 @@ export class TransportService {
       .set('email', email)
       .set('id', id);
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     return this.httpClient.patch(this.oauthApiUrl + '/transport-service/assign-driver', {headers: headers}, {params: params});

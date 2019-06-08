@@ -14,6 +14,8 @@ export class RoleGuardService implements CanActivate {
 
   public isAuthenticated(): boolean {
     const token = Cookie.get('access_token');
+    console.log(token);
+
     if (token == null) {
       return false;
     }
@@ -36,6 +38,7 @@ export class RoleGuardService implements CanActivate {
     }
     return true;
   }
+
   public getRole() {
     const token = Cookie.get('access_token');
     // decode the token to get its payload

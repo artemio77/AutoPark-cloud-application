@@ -5,7 +5,6 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Cookie} from 'ng2-cookies';
 import {RouteEntity} from '../model/route';
-import {Route} from '@angular/router';
 
 @Injectable()
 export class RouteService {
@@ -19,7 +18,7 @@ export class RouteService {
 
   public getRouteList(): Observable<RouteEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -28,7 +27,7 @@ export class RouteService {
 
   public getRouteListWithTransport(): Observable<RouteEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -37,7 +36,7 @@ export class RouteService {
 
   public getRouteListWithDrivers(): Observable<RouteEntity[]> {
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -57,7 +56,7 @@ export class RouteService {
     const params = new HttpParams()
       .set('routeId', routeId);
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     console.log(headers);
@@ -69,7 +68,7 @@ export class RouteService {
       .set('transportId', transportId)
       .set('routeId', routeId);
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     return this.httpClient.patch(this.oauthApiUrl + '/route-service/assign-transport', {headers: headers}, {params: params});
@@ -80,7 +79,7 @@ export class RouteService {
       .set('transportId', transportId)
       .set('routeId', routeId);
     const headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+      'Content-type': 'application/json',
       'Authorization': 'Bearer ' + Cookie.get('access_token')
     });
     return this.httpClient.patch<RouteEntity>(this.oauthApiUrl + '/route-service/remove-assign-transport', {headers: headers}, {params: params});

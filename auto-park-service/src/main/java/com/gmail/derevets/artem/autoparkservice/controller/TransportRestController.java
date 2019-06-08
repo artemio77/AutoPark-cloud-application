@@ -3,6 +3,7 @@ package com.gmail.derevets.artem.autoparkservice.controller;
 import com.gmail.derevets.artem.autoparkservice.model.Transport;
 import com.gmail.derevets.artem.autoparkservice.model.enums.TransportType;
 import com.gmail.derevets.artem.autoparkservice.service.TransportService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,11 +16,11 @@ import java.util.UUID;
 
 @Slf4j
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/transport-service")
 public class TransportRestController {
 
-    @Autowired
-    private TransportService transportService;
+    private final TransportService transportService;
 
 
     @GetMapping("/get/transport")

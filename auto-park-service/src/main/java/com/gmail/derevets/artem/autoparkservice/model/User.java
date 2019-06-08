@@ -1,9 +1,6 @@
 package com.gmail.derevets.artem.autoparkservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.*;
 import com.gmail.derevets.artem.autoparkservice.model.enums.Role;
 import lombok.*;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -58,12 +55,12 @@ public class User extends BaseEntity<UUID> implements Serializable {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore
+    @JsonBackReference(value = "transport-user")
     @OneToOne(mappedBy = "currentAssignUser", cascade = CascadeType.ALL)
     private Transport transport;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonIgnore
+    @JsonBackReference(value = "route-user")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "route_id")
     private Route route;

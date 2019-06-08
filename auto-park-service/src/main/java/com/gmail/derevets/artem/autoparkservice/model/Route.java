@@ -2,11 +2,10 @@ package com.gmail.derevets.artem.autoparkservice.model;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,7 +17,10 @@ import java.util.UUID;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "route")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Route extends BaseEntity<UUID> {
 
 
@@ -30,12 +32,12 @@ public class Route extends BaseEntity<UUID> {
     private Integer routeNumber;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonBackReference
+    @JsonManagedReference(value = "transport-route")
     @OneToMany(mappedBy = "currentRouteAssign", cascade = CascadeType.ALL)
     private Set<Transport> transport;
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonBackReference
+    @JsonManagedReference(value = "route-user")
     @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
     private Set<User> users;
 

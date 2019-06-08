@@ -2,23 +2,26 @@ package com.gmail.derevets.artem.autoparkservice.controller;
 
 import com.gmail.derevets.artem.autoparkservice.model.Route;
 import com.gmail.derevets.artem.autoparkservice.service.RouteService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON;
+
 @Slf4j
 @RestController
-@RequestMapping("/route-service")
+@RequiredArgsConstructor
+@RequestMapping(value = "/route-service")
 public class RouteRestController {
 
-
-    @Autowired
-    private RouteService routeService;
+    private final RouteService routeService;
 
     @GetMapping("/get")
     public @ResponseBody
@@ -69,6 +72,7 @@ public class RouteRestController {
     }
 
     @PostMapping("/create")
+    @ResponseStatus(HttpStatus.CREATED)
     public @ResponseBody
     Route createRoute(@RequestBody Route route) {
         return routeService.createRoute(route);

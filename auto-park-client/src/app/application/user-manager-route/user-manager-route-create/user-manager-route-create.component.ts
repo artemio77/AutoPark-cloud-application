@@ -26,7 +26,7 @@ export class UserManagerRouteCreateComponent implements OnInit {
   ]);
   nameFormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern('^[a-zA-Z_]*$'),
+    Validators.pattern('^[a-zA-Z_0-9]*$'),
     Validators.min(2),
     Validators.max(30)
   ]);
@@ -41,7 +41,7 @@ export class UserManagerRouteCreateComponent implements OnInit {
     private formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       name: ['', [Validators.required,
-        Validators.pattern('^[a-zA-Z_]*$'),
+        Validators.pattern('^[a-zA-Z_0-9]*$'),
         Validators.min(2),
         Validators.max(30)]],
       routeNumber: ['', [Validators.required,

@@ -28,7 +28,7 @@ public class Transport extends BaseEntity<UUID> {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @JsonBackReference
+    @JsonBackReference(value = "transport-route")
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "route_id")
     private Route currentRouteAssign;
@@ -36,7 +36,7 @@ public class Transport extends BaseEntity<UUID> {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToOne
-    @JsonBackReference
+    @JsonBackReference("transport-user")
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User currentAssignUser;
 
